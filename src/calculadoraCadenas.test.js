@@ -7,4 +7,7 @@ describe("Sumar cadena", () => {
   it("devuelve 3 como total de la suma cuando la cadena es '3'", () => {
     expect(sumarCadena("3")).toEqual(3);
   });
+  it("devuelve el total de la suma de 2 números separados por ','", () => {
+    expect(sumarCadena("1,2")).toEqual(3);
+  });
 });
