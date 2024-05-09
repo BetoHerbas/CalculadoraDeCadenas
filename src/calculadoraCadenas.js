@@ -4,7 +4,7 @@ export default function sumarCadena(cadena){
   if(cadena === ""){
     return 0;
   }
-  cadenaNumeros = cadena.split(',').map(Number);
+  cadenaNumeros = cadena.split(/[,|-]/).map(Number);
   resultado = cadenaNumeros.reduce((total, numero) => total + numero, 0);
   return resultado;
 }
