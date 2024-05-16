@@ -1,3 +1,12 @@
+function addnumbersInArray(numbersArray){
+  let sum = 0;
+  for(const number of numbersArray){
+    if(number <= 1000)
+      sum = sum + Number(number);
+  } 
+  return sum;
+}
+
 export default function addChain(inputString) {
   let defaultDelimiters = [',', '-', /[,|-]/];
   let numbersArray = inputString;
@@ -21,11 +30,6 @@ export default function addChain(inputString) {
     return Number(numbersArray[0]);
 
   else{  
-
-    for(const number of numbersArray){
-      if(number <= 1000)
-        sum = sum + Number(number);
-    }    
-    return sum;
+    return addnumbersInArray(numbersArray);
   }
 }
