@@ -1,3 +1,5 @@
+let defaultDelimiters = [',', '-', /[,|-]/];
+
 function addnumbersInArray(numbersArray){
   let sum = 0;
   for(const number of numbersArray){
@@ -7,17 +9,18 @@ function addnumbersInArray(numbersArray){
   return sum;
 }
 
-export default function addChain(inputString) {
-  let defaultDelimiters = [',', '-', /[,|-]/];
-  let numbersArray = inputString;
-  let sum = 0;
-
-  const customDelimiterMatch = inputString.match(/^\/\/\[(.)\]/);
-
-  if(customDelimiterMatch){
+function obtainCustomDelimiter(customDelimiterMatch){
     const delimiter = customDelimiterMatch[1];
     defaultDelimiters.pop();
     defaultDelimiters.push(new RegExp(`[${delimiter}|,|-]`));
+}
+
+export default function addChain(inputString) {
+  let numbersArray = inputString;
+  const customDelimiterMatch = inputString.match(/^\/\/\[(.)\]/);
+
+  if(customDelimiterMatch){
+    obtainCustomDelimiter(customDelimiterMatch);
     numbersArray = inputString.slice(customDelimiterMatch[0].length +3 );
   }
 
